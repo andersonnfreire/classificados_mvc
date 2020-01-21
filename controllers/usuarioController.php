@@ -59,7 +59,7 @@ class usuarioController extends controller {
 
             if ($u->fazerLogin($email, $senha)) {
                 ?>
-                <script type="text/javascript">window.location.href = "<?php BASE_URL;?>";</script>
+                <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>";</script>
                 <?php
             } else {
                 ?>
@@ -69,7 +69,15 @@ class usuarioController extends controller {
                 <?php
             }
         }
-         $this->loadTemplate('login');
+        $this->loadTemplate('login');
+    }
+
+    public function sair() {
+        unset($_SESSION['cLogin']);
+        ?>
+        <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>usuario/login";</script>
+        <?php
+        
     }
 
 }
