@@ -7,9 +7,7 @@ class Categorias extends model {
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
-
 		return $array;
 	}
 
 }
-?>

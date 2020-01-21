@@ -220,20 +220,4 @@ class Anuncios extends model {
 		return $id_anuncio;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
