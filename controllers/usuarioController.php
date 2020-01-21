@@ -18,7 +18,7 @@ class usuarioController extends controller {
 
     public function cadastrar() {
         $u = new Usuarios();
-
+        $valor = 0;
         if (isset($_POST['nome']) && !empty($_POST['nome'])) {
             $nome = addslashes($_POST['nome']);
             $email = addslashes($_POST['email']);
@@ -27,7 +27,7 @@ class usuarioController extends controller {
 
             if (!empty($nome) && !empty($email) && !empty($senha)) {
                 if ($u->cadastrar($nome, $email, $senha, $telefone)) {
-                   ?>
+                    ?>
                     <div class="alert alert-success">
                         <strong>Parabéns!</strong> Cadastrado com sucesso. <a href="login" class="alert-link">Faça o login agora</a>
                     </div>
@@ -47,7 +47,29 @@ class usuarioController extends controller {
                 <?php
             }
         }
-         $this->loadTemplate('cadastra-se');
+        $this->loadTemplate('cadastra-se');
+    }
+
+    public function login() {
+        $u = new Usuarios();
+
+        if (isset($_POST['email']) && !empty($_POST['email'])) {
+            $email = addslashes($_POST['email']);
+            $senha = md5($_POST['senha']);
+
+            if ($u->fazerLogin($email, $senha)) {
+                ?>
+                <script type="text/javascript">window.location.href = "<?php BASE_URL;?>";</script>
+                <?php
+            } else {
+                ?>
+                <div class="alert alert-danger">
+                    Usuário e/ou Senha errados!        
+                </div>
+                <?php
+            }
+        }
+         $this->loadTemplate('login');
     }
 
 }

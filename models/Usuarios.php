@@ -30,7 +30,7 @@ class Usuarios extends model {
 
 	}
 
-	public function login($email, $senha) {
+	public function fazerLogin($email, $senha) {
 		$sql = $this->db->prepare("SELECT id FROM usuarios WHERE email = :email AND senha = :senha");
 		$sql->bindValue(":email", $email);
 		$sql->bindValue(":senha", md5($senha));

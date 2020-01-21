@@ -16,7 +16,7 @@
 						<li><a href="<?php echo BASE_URL; ?>login/sair">Sair</a></li>
 					<?php else: ?>
 						<li><a href="<?php echo BASE_URL; ?>usuario/cadastrar">Cadastre-se</a></li>
-						<li><a href="<?php echo BASE_URL; ?>login/">Login</a></li>
+						<li><a href="<?php echo BASE_URL; ?>usuario/login">Login</a></li>
 					<?php endif; ?>
 				</ul>
 			</div>
