@@ -7,7 +7,7 @@ class Core {
 		if(isset($_GET['url'])) {
 			$url .= $_GET['url'];
 		}
-
+                
 		$params = array();
 
 		if(!empty($url) && $url != '/') {
@@ -32,7 +32,7 @@ class Core {
 			$currentController = 'homeController';
 			$currentAction = 'index';
 		}
-
+                
 		if(!file_exists('controllers/'.$currentController.'.php') || !method_exists($currentController, $currentAction)) {
 			$currentController = 'notfoundController';
 			$currentAction = 'index';
