@@ -34,7 +34,7 @@
                     <option value="3">Ótimo</option>
                 </select>
             </div>
-            <input type="submit" value="Adicionar" class="btn btn-dark">
+            <input type="submit" value="Adicionar" class="btn btn-info">
         </form>
 
 
