@@ -49,7 +49,7 @@
                  <?php foreach ($info['fotos'] as $ft): ?>
                         <div class="foto_item">
                             <img src="<?php echo BASE_URL;?>assets/images/anuncios/<?php echo $ft['url']; ?>" class="foto_item img" border="0" />
-                            <a href="excluir-foto.php?id=<?php echo $ft['id']; ?>" class="btn btn-primary">Excluir Imagem</a>
+                            <a href="<?php echo BASE_URL;?>anuncio/excluirFoto/<?php echo $ft['id']; ?>" class="btn btn-primary">Excluir Imagem</a>
                         </div>
                         
                 <?php endforeach; ?>

@@ -100,7 +100,7 @@ class anuncioController extends controller {
     }
 
     function excluirAnuncio($id) {
-        
+
         $this->verificarUsuario();
 
         $a = new Anuncios();
@@ -108,9 +108,26 @@ class anuncioController extends controller {
         if (isset($id) && !empty($id)) {
             $a->excluirAnuncio($id);
         }
-         ?>
+        ?>
+        <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>anuncio/MeusAnuncios";</script>
+        <?php
+    }
+
+    function excluirFoto($id) {
+        $a = new Anuncios();
+
+        if (isset($id) && !empty($id)) {
+            $id_anuncio = $a->excluirFoto($id);
+        }
+        if (isset($id_anuncio)) {
+            ?>
+            <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>anuncio/editarAnuncio/<?php echo $id_anuncio; ?>";</script>
+            <?php
+        } else {
+            ?>
             <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>anuncio/MeusAnuncios";</script>
             <?php
+        }
     }
 
 }
