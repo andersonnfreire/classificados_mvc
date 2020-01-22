@@ -45,23 +45,72 @@ class anuncioController extends controller {
             $estado = addslashes($_POST['estado']);
 
             $a->addAnuncio($titulo, $categoria, $valor, $descricao, $estado);
-
             ?>
             <div class="alert alert-success">
                 Produto Adicionado com sucesso!
             </div>
             <?php
-            
         }
         $c = new Categorias();
         $cats = $c->getLista();
-        
+
         $dados['cats'] = $cats;
-        
+
         $this->loadTemplate('addAnuncio', $dados);
+    }
+
+    function editarAnuncio($id) {
+
+        $this->verificarUsuario();
+        $a = new Anuncios();
+        if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
+            $titulo = addslashes($_POST['titulo']);
+            $categoria = addslashes($_POST['categoria']);
+            $valor = addslashes($_POST['valor']);
+            $descricao = addslashes($_POST['descricao']);
+            $estado = addslashes($_POST['estado']);
+
+            if (isset($_FILES['fotos'])) {
+                $fotos = $_FILES['fotos'];
+            } else {
+                $fotos = array();
+            }
+            $fotos = $_FILES['fotos'];
+            $a->editAnuncio($titulo, $categoria, $valor, $descricao, $estado, $fotos, $id);
+            ?>
+            <div class="alert alert-success">
+                Produto editado com sucesso!
+            </div>
+            <?php
+        }
+        $c = new Categorias();
+        $cats = $c->getLista();
+        if (isset($id) && !empty($id)) {
+            $info = $a->getAnuncio($id);
+        } else {
+            ?>
+            <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>anuncio/meus-anuncios";</script>
+            <?php
+            exit;
+        }
+        $dados['cats'] = $cats;
+        $dados['info'] = $info;
+
+        $this->loadTemplate('editAnuncios', $dados);
+    }
+
+    function excluirAnuncio($id) {
         
-        
-        
+        $this->verificarUsuario();
+
+        $a = new Anuncios();
+
+        if (isset($id) && !empty($id)) {
+            $a->excluirAnuncio($id);
+        }
+         ?>
+            <script type="text/javascript">window.location.href = "<?php echo BASE_URL; ?>anuncio/MeusAnuncios";</script>
+            <?php
     }
 
 }

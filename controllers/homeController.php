@@ -37,7 +37,7 @@ class homeController extends controller {
 		$dados['filtros'] = $filtros;
 		$dados['anuncios'] = $anuncios;
 		$dados['total_paginas'] = $total_paginas;
-
+                $dados['p'] = $p;
 		$this->loadTemplate('home', $dados);
 
 	}
